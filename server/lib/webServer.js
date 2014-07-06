@@ -3,8 +3,7 @@
  * @date July 2014
  */
 
-var http = require( 'http' ),
-    express = require( 'express' ),
+var express = require( 'express' ),
     join = require( 'path' ).join,
     favicon = require( 'serve-favicon' ),
     logger = require( 'morgan' ),
@@ -58,7 +57,7 @@ app.use( function( err, req, res, next ){
 });
 
 
-http.createServer( app ).listen( config.port, function( error ){
+app.listen( config.port, function( error ){
     if ( error )
         console.error( error );
     else

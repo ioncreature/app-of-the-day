@@ -3,8 +3,7 @@
  * @date July 2014
  */
 
-var http = require( 'http' ),
-    express = require( 'express' ),
+var express = require( 'express' ),
     join = require( 'path' ).join,
     favicon = require( 'serve-favicon' ),
     logger = require( 'morgan' ),
@@ -25,23 +24,19 @@ app.set( 'view engine', 'jade' );
 app.locals.route = config.route;
 app.locals.title = config.title;
 
-var publicDir = join( __dirname, '..', 'public' );
-app.use( favicon(join(publicDir, 'favicon.ico')) );
-app.use( logger( 'dev' ) );
+app.use( logger('dev') );
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded({extended: true}) );
 app.use( cookieParser() );
 app.use( route.API, api );
 app.use( route.INDEX, index );
 
-// catch 404 and forward to error handler
 app.use( function( req, res, next ){
     var err = new Error( 'Not Found' );
     err.status = 404;
     next( err );
-} );
+});
 
-// error handler
 app.use( function( err, req, res, next ){
     res.status( err.status || 500 );
     res.render( 'error', {
@@ -51,9 +46,10 @@ app.use( function( err, req, res, next ){
 });
 
 
-http.createServer( app ).listen( config.port, function( error ){
+app.listen( config.port, function( error ){
     if ( error )
         console.error( error );
     else
         console.log( 'Server listening on port %s', config.port );
 });
+

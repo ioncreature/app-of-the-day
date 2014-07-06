@@ -14,8 +14,17 @@ exports.route = {
     LOGIN: '/login',
     LOGOUT: '/logout',
 
+
+    // Client API
+    GET_NOTIFICATIONS: '/notification',
+    OPEN_NOTIFICATION: '/notification/:id/open',
+    GET_APP: '/app-of-the-day',
+    OPEN_APP: '/app/:id/open',
+    APPS_STATUS: '/user/:id/apps',
+
+
     // REST API
-    API: '/api',
+    API_PREFIX: '/api',
     API_INFO: '/',
     CARDS: '/card',
     CARD: '/card/:id',
@@ -25,14 +34,10 @@ exports.route = {
 
 
 exports.webServer = {
-
+    port: 1337
 };
 
 
 exports.apiServer = {
-    port: 3000,
-    route: {
-        INDEX: '/',
-
-    }
+    port: 3000
 };
