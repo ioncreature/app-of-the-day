@@ -1,0 +1,7 @@
+{
+    "name": "app-of-the-day",
+    "dependencies": {
+        "jquery": "2.1.x",
+        "bootstrap": "3.2.x"
+    }
+}

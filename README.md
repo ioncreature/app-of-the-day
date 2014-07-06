@@ -1,4 +1,4 @@
 app-of-the-day
 ==============
 
-Android app + server platform
+Mobile app + server platform
