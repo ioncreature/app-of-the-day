@@ -23,7 +23,8 @@ exports.connect = function( connectObject, options, callback ){
 
 exports.User = mongoose.model( 'User', require('./models/User'), 'users' );
 exports.Device = mongoose.model( 'Device', require('./models/Device'), 'devices' );
-exports.Offer = mongoose.model( 'Offer', require('./models/Offer'), 'offers' );
+exports.AppOfTheDay = mongoose.model( 'Offer', require('./models/AppOfTheDay'), 'appsOfTheDay' );
+exports.Notification = mongoose.model( 'Offer', require('./models/Notification'), 'notifications' );
 
 
 function format( connectionParams ){
