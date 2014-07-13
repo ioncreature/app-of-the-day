@@ -16,7 +16,6 @@ var mongoose = require( 'mongoose' ),
  */
 exports.connect = function( connectObject, options, callback ){
     var url = connectObject.map( format ).join( ',' );
-
     connection = mongoose.connect( url, options, callback );
 };
 
@@ -25,6 +24,7 @@ exports.User = mongoose.model( 'User', require('./models/User'), 'users' );
 exports.Device = mongoose.model( 'Device', require('./models/Device'), 'devices' );
 exports.AppOfTheDay = mongoose.model( 'Offer', require('./models/AppOfTheDay'), 'appsOfTheDay' );
 exports.Notification = mongoose.model( 'Offer', require('./models/Notification'), 'notifications' );
+exports.ObjectId = mongoose.Types.ObjectId;
 
 
 function format( connectionParams ){
@@ -33,7 +33,6 @@ function format( connectionParams ){
         slashes: true,
         protocol: 'mongodb'
     };
-
     settings.pathname = connectionParams.dbname;
 
     return url.format( util.mixin(settings, connectionParams) );
