@@ -14,6 +14,7 @@ var express = require( 'express' ),
     config = registry.get( 'config' ),
     route = config.route;
 
+module.exports = app;
 
 var index = require( '../routes/index' ),
     api = require( '../routes/api' );
@@ -44,12 +45,3 @@ app.use( function( err, req, res, next ){
         error: config.debug ? err : ''
     });
 });
-
-
-app.listen( config.port, function( error ){
-    if ( error )
-        console.error( error );
-    else
-        console.log( 'Server listening on port %s', config.port );
-});
-

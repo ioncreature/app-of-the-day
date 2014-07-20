@@ -31,8 +31,19 @@ db.connect( config.mongodb, {}, function( error ){
     }
     else {
         registry.set( 'db', db );
-        program
-            .command()
-        require( './lib/webServer' );
+        var app = require( './lib/apiServer' );
+        app.listen( config.port, function( error ){
+            if ( error )
+                abort( error );
+            else
+                console.log( 'Server listening on port %s', config.port );
+        });
     }
 });
+
+
+function abort( error ){
+    if ( error )
+        console.error( error );
+    process.abort();
+}
