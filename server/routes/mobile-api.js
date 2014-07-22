@@ -18,24 +18,24 @@ module.exports = router;
 
 router.get( route.API_INFO, function( req, res ){
     res.json({
-        name: 'App of the day REST API',
+        name: 'App of the day HTTP API',
         version: packageInfo.version
     });
 });
 
 
 router.get( route.GET_NOTIFICATIONS, function( req, res, next ){
-    var b = req.body,
+    var q = req.query,
         data = {
-            id: b.id,
-            country: b.country,
-            locale: b.locale,
-            simCountry: b.simCountry,
-            operatorId: b.operatorId,
-            apiLevel: b.apiLevel,
-            osVersion: b.osVersion,
-            manufacturer: b.manufacturer,
-            model: b.model,
+            id: q.id,
+            country: q.country,
+            locale: q.locale,
+            simCountry: q.simCountry,
+            operatorId: q.operatorId,
+            apiLevel: q.apiLevel,
+            osVersion: q.osVersion,
+            manufacturer: q.manufacturer,
+            model: q.model,
             lastActive: new Date
         };
 

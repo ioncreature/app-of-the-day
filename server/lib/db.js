@@ -22,8 +22,8 @@ exports.connect = function( connectObject, options, callback ){
 
 exports.User = mongoose.model( 'User', require('./models/User'), 'users' );
 exports.Device = mongoose.model( 'Device', require('./models/Device'), 'devices' );
-exports.AppOfTheDay = mongoose.model( 'Offer', require('./models/AppOfTheDay'), 'appsOfTheDay' );
-exports.Notification = mongoose.model( 'Offer', require('./models/Notification'), 'notifications' );
+exports.AppOfTheDay = mongoose.model( 'AppOfTheDay', require('./models/AppOfTheDay'), 'appsOfTheDay' );
+exports.Notification = mongoose.model( 'Notification', require('./models/Notification'), 'notifications' );
 exports.ObjectId = mongoose.Types.ObjectId;
 
 

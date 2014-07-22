@@ -7,7 +7,8 @@
 var program = require( 'commander' ),
     util = require( './lib/util' ),
     packageInfo = util.getPackageInfo(),
-    registry = require( './lib/registry' );
+    registry = require( './lib/registry' ),
+    db = require( './lib/db' );
 
 
 program
@@ -20,8 +21,6 @@ program.parse( process.argv );
 var config = util.getConfig( program.config );
 process.title = config.processTitle;
 registry.set( 'config', config );
-
-var db = require( './lib/db' );
 
 
 db.connect( config.mongodb, {}, function( error ){

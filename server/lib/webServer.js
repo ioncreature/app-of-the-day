@@ -21,6 +21,8 @@ var index = require( '../routes/index' ),
 
 app.set( 'views', join(__dirname, '..', 'views') );
 app.set( 'view engine', 'jade' );
+app.disable( 'x-powered-by' );
+config.debug && app.set( 'json spaces', '    ' );
 
 app.locals.route = config.route;
 app.locals.title = config.title;

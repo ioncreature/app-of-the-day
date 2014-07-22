@@ -12,15 +12,15 @@ var express = require( 'express' ),
     registry = require( './registry' ),
     app = express(),
     config = registry.get( 'config' ),
-    route = config.route;
+    route = config.route,
+    mobileApi = require( '../routes/mobile-api' );
 
 module.exports = app;
 
-var index = require( '../routes/index' ),
-    api = require( '../routes/api' );
-
 app.set( 'views', join(__dirname, '..', 'views') );
 app.set( 'view engine', 'jade' );
+app.disable( 'x-powered-by' );
+config.debug && app.set( 'json spaces', '    ' );
 
 app.locals.route = config.route;
 app.locals.title = config.title;
@@ -29,8 +29,7 @@ app.use( logger('dev') );
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded({extended: true}) );
 app.use( cookieParser() );
-app.use( route.API, api );
-app.use( route.INDEX, index );
+app.use( route.INDEX, mobileApi );
 
 app.use( function( req, res, next ){
     var err = new Error( 'Not Found' );

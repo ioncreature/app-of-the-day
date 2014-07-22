@@ -26,11 +26,12 @@ module.exports = Device;
 
 
 Device.statics.register = function( data, callback ){
+    var DeviceModel = this.model( 'Device' );
     this.findOne( {id: data.id}, function( error, device ){
         if ( error )
             callback( error );
         else if ( !device )
-            Device.create( data, callback );
+            DeviceModel.create( data, callback );
         else {
             device.set( 'lastActive', new Date );
             device.save( callback );
@@ -41,4 +42,9 @@ Device.statics.register = function( data, callback ){
 
 Device.statics.isValid = function( data ){
     return data && !!data.id;
+};
+
+
+Device.methods.getAppOfTheDay = function( callback ){
+
 };

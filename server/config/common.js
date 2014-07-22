@@ -24,7 +24,7 @@ exports.route = {
 
 
     // REST API
-    API_PREFIX: '/api',
+    API: '/api',
     API_INFO: '/',
     CARDS: '/card',
     CARD: '/card/:id',
